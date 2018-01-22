@@ -1,0 +1,28 @@
+<!-- <form class="form-inline">
+  <div class="form-group">
+    <input type="search" class="form-control" placeholder="Enter search string" #search >
+  </div>
+  <button type="button" class="btn btn-primary" (click)="doSearch(search.value)"> Search </button>
+</form> -->
+
+<hr/>
+
+
+<form class="form-inline">
+  <div class="form-group">
+    <input type="search" class="form-control" placeholder="Enter search string" [formControl]="searchField" >
+  </div>
+</form>
+
+<hr/>
+
+<div class="text-center">
+  <p class="lead" *ngIf="loading">Loading...</p>
+</div>
+
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let track of results | async" >
+    <img src="{{track.thumbnail}}">
+    <a target="_blank" href="{{track.link}}" >{{track.name}}</a>
+  </li>
+</ul>
